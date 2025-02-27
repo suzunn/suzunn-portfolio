@@ -1,0 +1,26 @@
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/Geist-Regular.woff2') format('woff2');
+}
+
+:root {
+  /* Ensure consistent font variables */
+  --font-geist-mono: var(--font-geist-mono);
+  --font-geist-sans: var(--font-geist-sans);
+}
+
+/* Static class names that won't change between server and client */
+.font-geist {
+  font-family: 'Geist', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+}
+
+.font-geist-mono {
+  font-family: var(--font-geist-mono), 'SF Mono', Menlo, Monaco, Consolas, monospace;
+}
+
+.font-geist-sans {
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+}

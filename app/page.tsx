@@ -1,101 +1,126 @@
-import Image from "next/image";
+'use client'
+import dynamic from 'next/dynamic'
+import { Home as HomeIcon, User, Briefcase, Code } from 'lucide-react'
+import { motion } from "framer-motion"
+import { StackedCircularFooter } from "@/components/ui/stacked-circular-footer"
+import { Particles } from "@/components/ui/particles"
+
+// Dinamik importları optimize edelim
+const Hero = dynamic(() => import('@/components/Hero'), { 
+  ssr: false,
+  loading: () => <div className="min-h-screen" /> 
+})
+const About = dynamic(() => import('@/components/About'), {
+  ssr: false,
+  loading: () => <div className="min-h-screen" />
+})
+const Skills = dynamic(() => import('@/components/Skills'), {
+  ssr: false,
+  loading: () => <div className="min-h-screen" />
+})
+const Projects = dynamic(() => import('@/components/Projects'), {
+  ssr: false,
+  loading: () => <div className="min-h-screen" />
+})
+const NavBar = dynamic(() => import('@/components/ui/tubelight-navbar').then(mod => mod.NavBar), {
+  ssr: false,
+  loading: () => <div className="h-16" />
+})
+const SplashCursor = dynamic(() => import('@/components/ui/splash-cursor').then(mod => mod.SplashCursor), {
+  ssr: false 
+})
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const navItems = [
+    { name: 'Home', url: '#hero', icon: HomeIcon },
+    { name: 'About', url: '#about', icon: User },
+    { name: 'Projects', url: '#projects', icon: Briefcase },
+    { name: 'Skills', url: '#skills', icon: Code }
+  ]
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  return (
+    <main className="min-h-screen bg-black relative">
+      {/* Navbar Layer (En üstte olmalı) */}
+      <NavBar items={navItems} className="mt-4 md:mt-8 z-[999]" />
+
+      
+      {/* Background Layer (z-0) */}
+      <div className="fixed inset-0 w-full h-full z-0">
+        <Particles
+          className="absolute inset-0"
+          quantity={200}
+          staticity={50}
+          ease={50}
+          size={0.5}
+          color="#4c1d95"
+        />
+      </div>
+
+      {/* Fluid Cursor Effect Layer (z-5) */}
+      <div className="fixed inset-0 w-full h-full z-[5]">
+        <SplashCursor 
+          SPLAT_RADIUS={0.3}
+          DENSITY_DISSIPATION={2}
+          COLOR_UPDATE_SPEED={5}
+          SPLAT_FORCE={4000}
+          BACK_COLOR={{ r: 0, g: 0, b: 0 }}
+          TRANSPARENT={true}
+        />
+      </div>
+      
+      {/* Content Layer (z-index düşürüldü) */}
+      <div className="relative z-[10] pointer-events-auto">
+        {/* Light Effect */}
+        <div className="absolute top-0 isolate z-0 flex w-screen flex-1 items-start justify-center">
+          {/* Left beam - Sol ışık demeti */}
+          <div className="absolute top-0 left-1/2 z-50 h-[40rem] w-[600px] origin-top-right -rotate-[30deg] bg-gradient-to-b from-primary/50 to-transparent opacity-40 blur-3xl" />
+
+          {/* Right beam - Sağ ışık demeti */}
+          <div className="absolute top-0 right-1/2 z-50 h-[40rem] w-[600px] origin-top-left rotate-[30deg] bg-gradient-to-b from-primary/50 to-transparent opacity-40 blur-3xl" />
+
+          {/* Center source - Merkezdeki ışık kaynağı */}
+          <motion.div
+            initial={{ width: "200px", opacity: 0 }}
+            animate={{ width: "300px", opacity: 1 }}
+            transition={{ ease: "easeInOut", duration: 1 }}
+            className="absolute top-0 z-30 h-32 rounded-full bg-primary/80 blur-2xl"
+          />
+
+          {/* Ambient glow - Ortam ışığı */}
+          <div className="absolute top-32 z-40 h-96 w-[1000px] bg-primary/20 opacity-30 blur-3xl rounded-full" />
+
+          {/* Top line - İnce çizgi */}
+          <motion.div
+            initial={{ width: "150px", opacity: 0 }}
+            animate={{ width: "200px", opacity: 1 }}
+            transition={{ ease: "easeInOut", duration: 1 }}
+            className="absolute top-0 z-50 h-[2px] bg-primary rounded-full"
+          />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+
+        <section id="hero" className="relative z-[100] pointer-events-auto">
+          <Hero />
+        </section>
+        
+        <section id="about" className="relative z-[80]">
+          <About />
+        </section>
+        
+        <section id="projects" className="relative z-[70]">
+          <Projects />
+        </section>
+        
+        <section id="skills" className="relative z-[60]">
+          <Skills />
+        </section>
+        
+        {/* Contact section'ı tamamen kaldırıyoruz */}
+      </div>
+      
+      {/* Footer'ı en üst katmana taşıyoruz ve pointer-events'i aktif ediyoruz */}
+      <div className="relative z-[999] pointer-events-auto">
+        <StackedCircularFooter />
+      </div>
+    </main>
+  )
 }

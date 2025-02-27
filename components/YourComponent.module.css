@@ -1,0 +1,18 @@
+.base {
+  /* Base styles that work on both server and client */
+}
+
+.browserSpecific {
+  /* Styles that only apply after hydration */
+  opacity: 0;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
