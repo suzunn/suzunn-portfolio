@@ -105,7 +105,7 @@ export default function About() {
             >
               <div className="p-6 space-y-4">
                 <p className="text-xl text-gray-300">
-                  Hi! I'm Suleyman Arif Uzun, a Data Scientist and Deep Learning Researcher passionate about extracting insights from data and solving complex problems. I am currently pursuing a degree in Computer Science at Istanbul University, with a strong focus on machine learning and deep learning applications.
+                  Hi! I&apos;m Suleyman Arif Uzun, a Data Scientist and Deep Learning Researcher passionate about extracting insights from data and solving complex problems. I am currently pursuing a degree in Computer Science at Istanbul University, with a strong focus on machine learning and deep learning applications.
                 </p>
                 <p className="text-gray-400">
                   I completed an intensive Data Science Bootcamp under the mentorship of <a 
@@ -119,7 +119,7 @@ export default function About() {
                   Beyond technical expertise, I enjoy bridging the gap between data and decision-making through effective data visualization and storytelling. I am always eager to explore innovative approaches to problem-solving and collaborate on cutting-edge projects in AI and data science.
                 </p>
                 <p className="text-gray-400">
-                  Let's connect and build something impactful together!
+                  Let&apos;s connect and build something impactful together!
                 </p>
               </div>
             </ShineBorder>

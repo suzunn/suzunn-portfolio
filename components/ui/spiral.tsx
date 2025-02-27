@@ -2,7 +2,7 @@
 
 import React from "react"
 import { motion } from "framer-motion"
-import Image from "next/image"
+
 
 interface GradientTracingProps {
   width: number
@@ -12,6 +12,7 @@ interface GradientTracingProps {
   animationDuration?: number
   strokeWidth?: number
   path?: string
+  noTrail?: boolean;
 }
 
 export const GradientTracing: React.FC<GradientTracingProps> = ({

@@ -6,7 +6,6 @@ import Link from "next/link"
 import { LucideIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { ShineBorder } from "@/components/ui/shine-border"
-import { MessageSquare } from 'lucide-react'
 
 interface NavItem {
   name: string
@@ -21,7 +20,7 @@ interface NavBarProps {
 
 export function NavBar({ items, className }: NavBarProps) {
   const [activeTab, setActiveTab] = useState(items[0].name)
-  const [isMobile, setIsMobile] = useState(false)
+  const [,setIsMobile] = useState(false)
   const [showNavbar, setShowNavbar] = useState(false)
 
   useEffect(() => {
@@ -95,7 +94,7 @@ export function NavBar({ items, className }: NavBarProps) {
       >
         <div className="flex items-center justify-center gap-2 md:gap-3 py-1 px-1">
           {items.map((item) => {
-            const Icon = item.icon
+            //const Icon = item.icon
             const isActive = activeTab === item.name
 
             return (

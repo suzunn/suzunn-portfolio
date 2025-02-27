@@ -22,7 +22,7 @@ export default function Hero() {
             />
           </div>
           <span>
-            Hi, I'm{' '}
+            Hi, I&apos;m{' '}
             <GradientText
               colors={["#ff40b3", "#4079ff", "#40ffaa"]}
               animationSpeed={5}

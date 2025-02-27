@@ -7,6 +7,13 @@ interface HoverButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>
   children: React.ReactNode
 }
 
+import { CSSProperties } from 'react';
+
+interface CustomCSSProperties extends CSSProperties {
+  "--circle-start"?: string;
+  "--circle-end"?: string;
+}
+
 const HoverButton = React.forwardRef<HTMLButtonElement, HoverButtonProps>(
   ({ className, children, ...props }, ref) => {
     const buttonRef = React.useRef<HTMLButtonElement>(null)
@@ -85,7 +92,7 @@ const HoverButton = React.forwardRef<HTMLButtonElement, HoverButtonProps>(
 
     return (
       <button
-        ref={buttonRef}
+        ref={ref}
         className={cn(
           "relative isolate px-8 py-3 rounded-3xl",
           "text-foreground font-medium text-base leading-6",
@@ -106,7 +113,7 @@ const HoverButton = React.forwardRef<HTMLButtonElement, HoverButtonProps>(
         style={{
           "--circle-start": "var(--tw-gradient-from, #a0d9f8)",
           "--circle-end": "var(--tw-gradient-to, #3a5bbf)",
-        }}
+        } as CustomCSSProperties}
       >
         {circles.map(({ id, x, y, color, fadeState }) => (
           <div

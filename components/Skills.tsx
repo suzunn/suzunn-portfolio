@@ -4,23 +4,21 @@ import { motion } from 'framer-motion'
 import { BlurIn } from "@/components/ui/blur-in"
 import { GradientText } from "@/components/ui/gradient-text"
 import { LogoCarousel } from './ui/logos3'
-import { GlowEffect } from "@/components/ui/glow-effect"
-import { BorderTrail } from "@/components/ui/border-trail"
+//import { GlowEffect } from "@/components/ui/glow-effect"
+//import { BorderTrail } from "@/components/ui/border-trail"
 import { GradientTracing } from './ui/bolt'
 import { FeaturesSectionWithHoverEffects } from './blocks/feature-section-with-hover-effects'
 
 export default function Skills() {
   const [shouldRenderTracing, setShouldRenderTracing] = useState(false);
-  const [windowWidth, setWindowWidth] = useState(0);
+  const [setWindowWidth] = useState(0);
 
   useEffect(() => {
     // İlk render'da window genişliğini al
-    setWindowWidth(window.innerWidth);
     setShouldRenderTracing(window.innerWidth > 768);
 
     // Resize event listener
     const handleResize = () => {
-      setWindowWidth(window.innerWidth);
       setShouldRenderTracing(window.innerWidth > 768);
     };
 

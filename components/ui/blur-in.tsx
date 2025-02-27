@@ -4,8 +4,11 @@ import { motion } from "framer-motion";
 
 import { cn } from "@/lib/utils";
 
+import { ReactNode } from 'react';
+
+
 interface BlurIntProps {
-  word: string;
+  word: ReactNode;
   className?: string;
   variant?: {
     hidden: { filter: string; opacity: number };

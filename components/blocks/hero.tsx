@@ -3,8 +3,6 @@
 import * as React from "react"
 import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import Link from "next/link"
 
 interface HeroProps {
   title: React.ReactNode;

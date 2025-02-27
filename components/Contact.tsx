@@ -14,7 +14,7 @@ export default function Contact() {
             Get In Touch
           </h2>
           <p className="text-xl text-gray-400 mb-8">
-            Interested in collaborating? Let's connect and create something amazing together.
+            Interested in collaborating? Let&apos;s connect and create something amazing together.
           </p>
           <a
             href="mailto:your.email@example.com"

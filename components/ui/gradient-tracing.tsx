@@ -11,6 +11,7 @@ interface GradientTracingProps {
   animationDuration?: number
   strokeWidth?: number
   path?: string
+  noTrail?: boolean
 }
 
 export const GradientTracing: React.FC<GradientTracingProps> = ({
