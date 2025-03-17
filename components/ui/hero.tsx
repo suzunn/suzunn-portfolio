@@ -6,6 +6,23 @@ import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 
+interface HeroProps {
+  className?: string;
+  gradient?: boolean;
+  blur?: boolean;
+  title: string;
+  subtitle?: string;
+  actions?: {
+    label: string;
+    href: string;
+    variant?: "default" | "primary" | "secondary"; // aksiyonların türünü belirtmek isterseniz
+  }[];
+  titleClassName?: string;
+  subtitleClassName?: string;
+  actionsClassName?: string;
+  [key: string]: any; // Diğer tüm olası props'lar için
+}
+
 const Hero = React.forwardRef<HTMLElement, HeroProps>(
   (
     {

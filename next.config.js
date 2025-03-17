@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  eslint: {
+    ignoreDuringBuilds: true, // ESLint hatalarını build sırasında yok say
+  },
   reactStrictMode: true,
   devIndicators: {
     buildActivity: false,

@@ -50,10 +50,9 @@ const logos = [
 
 export function LogoCarousel() {
   const plugin = React.useMemo(
-    () => AutoScroll({ 
-      delay: 1500, 
+    () => AutoScroll({  
       stopOnInteraction: false,
-      direction: 'rtl'
+      direction: 'forward'
     }),
     []
   )

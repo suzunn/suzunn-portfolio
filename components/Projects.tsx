@@ -40,7 +40,7 @@ export default function Projects() {
           animationDuration={8}
           strokeWidth={2}
           baseColor="transparent"
-          noTrail={true}
+          
         />
       </div>
       <div className="container mx-auto px-4">

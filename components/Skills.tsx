@@ -11,7 +11,6 @@ import { FeaturesSectionWithHoverEffects } from './blocks/feature-section-with-h
 
 export default function Skills() {
   const [shouldRenderTracing, setShouldRenderTracing] = useState(false);
-  const [setWindowWidth] = useState(0);
 
   useEffect(() => {
     // İlk render'da window genişliğini al
