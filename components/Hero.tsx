@@ -33,7 +33,7 @@ export default function Hero() {
           </span>
         </div>
       }
-      subtitle="Data Scientist | ML Engineer | Python Developer"
+      subtitle="Data Scientist | Python Developer"
       titleClassName="text-5xl md:text-7xl font-bold text-white"
       subtitleClassName="text-2xl md:text-3xl text-gray-300"
     >
